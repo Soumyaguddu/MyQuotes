@@ -8,6 +8,8 @@ import com.soumya.myquotes.model.Quote
 object DataManager {
 
     var data = emptyArray<Quote>()
+    var currentQuote:Quote?=null
+    var currentPage= mutableStateOf(Pages.LISTING)
     val isDataLoaded = mutableStateOf(false)
     fun loadAssetsFromFile(context: Context) {
         val inputStream = context.assets.open("quote.json")
@@ -19,5 +21,17 @@ object DataManager {
         val gson = Gson()
         data = gson.fromJson(json, Array<Quote>::class.java)
         isDataLoaded.value = true
+    }
+
+    fun switchPages(quote: Quote?){
+        if (currentPage.value==Pages.LISTING)
+        {
+            currentQuote=quote
+            currentPage.value=Pages.DETAIL
+        }
+        else
+        {
+            currentPage.value=Pages.LISTING
+        }
     }
 }

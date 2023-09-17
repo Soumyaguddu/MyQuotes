@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.soumya.myquotes.screens.QuoteDetailScreen
 import com.soumya.myquotes.screens.QuoteListScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,13 +34,25 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     if (DataManager.isDataLoaded.value) {
-        QuoteListScreen(data = DataManager.data) {
-
+        if (DataManager.currentPage.value==Pages.LISTING)
+        {
+            QuoteListScreen(data = DataManager.data) {
+DataManager.switchPages(it)
+            }
         }
+        else
+        {
+            DataManager.currentQuote?.let { QuoteDetailScreen(quote = it) }
+        }
+
     } else {
         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize(1f)) {
             Text(text = "Loading....", style = MaterialTheme.typography.h6)
 
         }
     }
+}
+enum class Pages{
+    LISTING,
+    DETAIL
 }

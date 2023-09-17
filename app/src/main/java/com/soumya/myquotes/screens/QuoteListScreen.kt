@@ -15,7 +15,7 @@ import com.soumya.myquotes.R
 import com.soumya.myquotes.model.Quote
 
 @Composable
-fun QuoteListScreen(data: Array<Quote>, onClick: () -> Unit) {
+fun QuoteListScreen(data: Array<Quote>, onClick: (quote:Quote) -> Unit) {
     Column() {
         Text(
             text = "Hindi Dialogue",
@@ -24,8 +24,5 @@ fun QuoteListScreen(data: Array<Quote>, onClick: () -> Unit) {
             style = MaterialTheme.typography.h6,
             fontFamily = FontFamily(Font(R.font.montserratblackitalic))
         )
-        QuoteList(data = data) {
-
-        }
-    }
-}
+        QuoteList(data = data,onClick)
+}}

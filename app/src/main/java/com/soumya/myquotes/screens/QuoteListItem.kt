@@ -26,10 +26,10 @@ import com.soumya.myquotes.model.Quote
 import com.soumya.myquotes.R
 
 @Composable
-fun QuoteListItem(quote: Quote, onClick: () -> Unit) {
+fun QuoteListItem(quote: Quote, onClick: (quote:Quote) -> Unit) {
     Card(
         elevation = 8.dp, modifier = Modifier
-            .clickable { onClick() }
+            .clickable { onClick(quote) }
             .padding(12.dp),
         backgroundColor = Color(0xFFDDDFE0)
     ) {

@@ -1,5 +1,6 @@
 package com.soumya.myquotes.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -20,12 +21,16 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
+import com.soumya.myquotes.DataManager
 import com.soumya.myquotes.R
 import com.soumya.myquotes.model.Quote
 
 
 @Composable
 fun QuoteDetailScreen(quote: Quote) {
+    BackHandler() {
+        DataManager.switchPages(null)
+    }
     Box(
         contentAlignment = Alignment.Center, modifier = Modifier
             .fillMaxSize(1f)
@@ -65,7 +70,7 @@ fun QuoteDetailScreen(quote: Quote) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = quote.dialog_deliverer ,
+                    text = quote.dialog_deliverer,
                     style = MaterialTheme.typography.subtitle1,
                     fontFamily = FontFamily(Font(R.font.montserrat_light_italic))
                 )
