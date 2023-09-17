@@ -21,7 +21,7 @@ fun QuoteListScreen(data: Array<Quote>, onClick: () -> Unit) {
             text = "Hindi Dialogue",
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(8.dp, 16.dp).fillMaxWidth(1f),
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.h6,
             fontFamily = FontFamily(Font(R.font.montserratblackitalic))
         )
         QuoteList(data = data) {
